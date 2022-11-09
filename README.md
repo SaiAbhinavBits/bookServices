@@ -5,7 +5,7 @@ Five API calls :
 create book,
 get book by id,
 get all books,
-delete book by id,
+delete book by id
 
 
 The service is build to docker container
