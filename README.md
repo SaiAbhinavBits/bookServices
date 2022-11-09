@@ -1,7 +1,7 @@
 In a book Cart Application book services is one of the microservice
 
 Five API calls :
-----------------
+
 create book
 get book by id
 get all books
