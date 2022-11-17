@@ -1,9 +1,26 @@
 const express = require('express');
+const mongose = require('mongoose');
 const app = express();
+const uri = "mongodb+srv://Abhinav:AbhiMongo@cluster0.ojubk3r.mongodb.net/?retryWrites=true&w=majority"
+const client = new mongose.connect(uri);
+async function connect() {
+  try {
+    await client;
+    console.log("connected to mongoDB");
+  
+
+  } catch(error){
+     console.error(error);
+  }
+}
+connect();
+
 // const amqp = require('amqplib');
 const port = process.env.PORT || 3200;
 // var channel , connection ;
 
+
+////////////
 app.listen(port, () => {
  console.log(`running at port ${port}`);
 });
@@ -26,6 +43,14 @@ app.post("/new_book", (req, res) => {
     id: books.length + 1,
     date: Date.now().toString()
     });
+    // for (let bk of books) {
+    //   async function createListing(client, bk){
+    //     const result = await client.db("bookServices").collection("bookCollection").insertOne(bk);
+    //     console.log(`New listing created with the following id: ${result.insertedId}`);
+    //   }
+
+    // }
+    
     console.log();
     
     // const bookId = id ;
@@ -96,7 +121,9 @@ message: "No books available"
       res.status(404).json({ message: "Invalid book Id" });
       });
 
+     
 
+  
 
 
   //     /////RabbitMQ messaging////
